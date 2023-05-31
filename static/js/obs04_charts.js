@@ -4,7 +4,7 @@ var chart;
  * Request data from the server, add it to the graph and set a timeout
  * to request again
  */
-function requestOBS02_Data() {
+function requestOBS04_Data() {
     $.ajax({
         url: '/obs-0004',
         success: function(point) {
@@ -23,7 +23,7 @@ function requestOBS02_Data() {
             chart.series[7].addPoint(point[7], true, shift);
 
             // call it again after one second
-            setTimeout(requestOBS02_Data, 1000);
+            setTimeout(requestOBS04_Data, 1000);
         },
         cache: false
     });
@@ -35,7 +35,7 @@ $(document).ready(function() {
             renderTo: 'obs-0004-data-container',
             defaultSeriesType: 'spline',
             events: {
-                load: requestOBS02_Data
+                load: requestOBS04_Data
             }
         },
         title: {
