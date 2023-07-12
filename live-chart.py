@@ -76,7 +76,7 @@ def obs4():
 def live_data3():
     res = requests.get('http://125.141.107.23:8080/api/getObsData?obsID=OBS-0003')
     json_Object = json.loads(res.text)
-    print(f'Get Request Response : {res.text}')
+    # print(f'Get Request Response : {res.text}')
 
     jsonArray = json_Object.get("obs_data")
     a = int(jsonArray[0]['DATETIME'])
@@ -95,16 +95,22 @@ def live_data3():
     response.content_type = 'application/json'
     return response
 
+
+# @app.route('/<site_id>')
+# def live_data4(site_id):
+    # url = 'http://125.141.107.23:8080/api/getObsData?obsID={}'.format(site_id.upper())
+    # print('Request URL : ' + url)
+    # res = requests.get(url)
 @app.route('/obs-0004')
 def live_data4():
     res = requests.get('http://125.141.107.23:8080/api/getObsData?obsID=OBS-0004')
     json_Object = json.loads(res.text)
-    print(f'Get Request Response : {res.text}')
+    # print(f'Get Request Response : {res.text}')
 
     jsonArray = json_Object.get("obs_data")
     a = int(jsonArray[0]['DATETIME'])
     b = float(jsonArray[0]['DATA'])
-    print(f'Get obs-0002 Request Response : {a} : {b}')
+    print(f'Get obs-0004 Request Response : {a} : {b}')
 
     data = [((int(jsonArray[0]['DATETIME']) + 0) * 1000 , float(jsonArray[0]['DATA'])),
             ((int(jsonArray[1]['DATETIME']) + 0) * 1000 , float(jsonArray[1]['DATA'])),
